@@ -1,4 +1,4 @@
-var x = require("babel/register");
+var x = require("babel-core/register");
 var gulp = require( "gulp" );
 var webpack = require( "webpack-stream" );
 var sourcemaps = require( "gulp-sourcemaps" );
