@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "ES6 Fun",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claireparker/clairex.git"
+  },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "author": "Claire Parker <claire.parker87@gmail.com>",
   "license": "MIT",
@@ -22,6 +26,8 @@
     "webpack-stream": "^2.1.0"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "chai": "^3.5.0",
+    "lodash": "^3.10.1",
+    "mocha": "^2.4.5"
   }
 }
