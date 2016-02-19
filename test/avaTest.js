@@ -12,4 +12,6 @@ test('toUrl', t => {
 
 test('#squeeze', t => {
   t.same('yelow mon', squeeze('yellow moon'));
+  t.same(' now is the', squeeze('  now   is  the'));
+  t.same('puters shot balls', squeeze('putters shoot balls', 'm-z'));
 });

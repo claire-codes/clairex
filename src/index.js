@@ -1,5 +1,5 @@
 var getFoo = function() {
-    return 42;
+  return 42;
 };
 
 var toUrl = function(str) {
@@ -7,13 +7,20 @@ var toUrl = function(str) {
   return str.replace(new RegExp('\\s', 'g'), '-').toLowerCase();
 }
 
-var squeeze = function(str) {
-  for (var i = 0; i < str.length - 1; i++) {
-    if (str.charAt(i) === str.charAt(i+1)) {
-      str = str.slice(0,i) + str.slice(i);
+var squeeze = function(str, range) {
+  let chars = [...str];
+  var rangeRegexp = new RegExp(`[${range}]`, 'g');
+  for (var j = 0; j < chars.length; j++) {
+    if (chars[j] === chars[j+1]) {
+      // if range === undefined i.e. false
+      if (!range) {
+        chars[j] = '';
+      } else if (chars[j].match(rangeRegexp)) {
+        chars[j] = '';
+      }
     }
   }
-  return str;
+  return chars.join('');
 }
 
 export { getFoo, toUrl, squeeze }
