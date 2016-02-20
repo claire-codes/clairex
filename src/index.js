@@ -23,4 +23,16 @@ var squeeze = function(str, range) {
   return chars.join('');
 }
 
-export { getFoo, toUrl, squeeze }
+var changeMoney = function(str) {
+  var exps = [
+    {regex: /\$(\d+)/, replace: '$1 dollars'},
+    {regex: /\€(\d+)/, replace: '$1 euros'},
+    {regex: /\£(\d+)/, replace: '$1 pounds'}
+  ];
+  for (var i = 0; i < exps.length; i++) {
+    str = str.replace(exps[i].regex, exps[i].replace);
+  }
+  return str;
+}
+
+export { getFoo, toUrl, squeeze, changeMoney }
