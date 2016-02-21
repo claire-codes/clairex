@@ -1,16 +1,11 @@
-var getFoo = function() {
-  return 42;
-};
+let getFoo = () => 42;
 
-var toUrl = function(str) {
-  // TODO: extrapolate replacement out
-  return str.replace(new RegExp('\\s', 'g'), '-').toLowerCase();
-}
+let toUrl = str => str.replace(new RegExp('\\s', 'g'), '-').toLowerCase();
 
-var squeeze = function(str, range) {
+let squeeze = (str, range) => {
   let chars = [...str];
-  var rangeRegexp = new RegExp(`[${range}]`, 'g');
-  for (var j = 0; j < chars.length; j++) {
+  let rangeRegexp = new RegExp(`[${range}]`, 'g');
+  for (let j = 0; j < chars.length; j++) {
     if (chars[j] === chars[j+1]) {
       // if range === undefined i.e. false
       if (!range) {
@@ -23,13 +18,16 @@ var squeeze = function(str, range) {
   return chars.join('');
 }
 
-var changeMoney = function(str) {
-  var exps = [
+let changeMoney = str => {
+  let exps = [
+    {regex: /\$(\d+).(\d\d)/, replace: '$1 dollars $2 cents'},
     {regex: /\$(\d+)/, replace: '$1 dollars'},
-    {regex: /\€(\d+)/, replace: '$1 euros'},
+    {regex: /\€(\d+).(\d\d)/, replace: '$1 euro $2 cents'},
+    {regex: /\€(\d+)/, replace: '$1 euro'},
+    {regex: /\£(\d+).(\d\d)/, replace: '$1 pounds $2 pence'},
     {regex: /\£(\d+)/, replace: '$1 pounds'}
   ];
-  for (var i = 0; i < exps.length; i++) {
+  for (let i = 0; i < exps.length; i++) {
     str = str.replace(exps[i].regex, exps[i].replace);
   }
   return str;
