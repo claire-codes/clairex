@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace } from '../src/index';
+import { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar } from '../src/index';
 
 test('clairex', t => {
   t.same(42, getFoo());
@@ -14,6 +14,15 @@ test('replaceWhitespace', t => {
   t.same(replaceWhitespace('oof','%'), 'oof');
   t.same(replaceWhitespace('good golly',''), 'goodgolly');
   t.same(replaceWhitespace('up side your head'), 'upsideyourhead');
+});
+
+test('convertMiscChar', t => {
+  t.same(convertMiscChar('Me & You'), 'Me and You');
+  t.same(convertMiscChar('#42'), 'number 42');
+  t.same(convertMiscChar('110%'), '110 percent');
+  t.same(convertMiscChar('a/b'), 'a slash b');
+  t.same(convertMiscChar('a\\b'), 'a slash b');
+  t.same(convertMiscChar('this*'), 'this star ');
 });
 
 test('toUrl', t => {
