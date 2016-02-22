@@ -1,6 +1,10 @@
 let getFoo = () => 42;
 
-let toUrl = str => str.replace(new RegExp('\\s', 'g'), '-').toLowerCase();
+let replaceWhitespace = (str, replacement = '') => {
+  return str.replace(new RegExp('\\s', 'g'), replacement);
+}
+
+let toUrl = str => replaceWhitespace(str.trim(), '-').toLowerCase();
 
 let squeeze = (str, range) => {
   let chars = [...str];
@@ -33,4 +37,4 @@ let changeMoney = str => {
   return str;
 }
 
-export { getFoo, toUrl, squeeze, changeMoney }
+export { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace }

@@ -1,9 +1,19 @@
 import test from 'ava';
 import 'babel-core/register';
-import { getFoo, toUrl, squeeze, changeMoney } from '../src/index';
+import { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace } from '../src/index';
 
 test('clairex', t => {
   t.same(42, getFoo());
+});
+
+test('replaceWhitespace', t => {
+  t.same(replaceWhitespace('foo bar','-'), 'foo-bar');
+  t.same(replaceWhitespace('bish bash bosh','!'), 'bish!bash!bosh');
+  t.same(replaceWhitespace('flim  flam   floop','*'), 'flim**flam***floop');
+  t.same(replaceWhitespace(' braap  ','$'), '$braap$$');
+  t.same(replaceWhitespace('oof','%'), 'oof');
+  t.same(replaceWhitespace('good golly',''), 'goodgolly');
+  t.same(replaceWhitespace('up side your head'), 'upsideyourhead');
 });
 
 test('toUrl', t => {
