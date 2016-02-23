@@ -1,7 +1,7 @@
 {
   "name": "clairex",
   "version": "0.0.1",
-  "description": "ES6 Fun",
+  "description": "ES6 Stringex",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "chai": "^3.5.0",
-    "lodash": "^4.5.0",
     "mocha": "^2.4.5"
   }
 }

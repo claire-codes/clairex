@@ -6,16 +6,6 @@ module.exports = {
       filename: "clairex.js"
    },
    devtool: "#inline-source-map",
-   externals: [
-      {
-         lodash: {
-            root: "_",
-            commonjs: "lodash",
-            commonjs2: "lodash",
-            amd: "lodash"
-         }
-      }
-   ],
    module: {
       loaders: [
          {
