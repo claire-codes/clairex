@@ -36,10 +36,6 @@ test('convertPunctuation', t => {
   t.same(convertPunctuation('huh?'), 'huh');
 });
 
-test('toUrl', t => {
-  t.same('foo-bar', toUrl('Foo Bar'));
-});
-
 test('#squeeze', t => {
   t.same('yelow mon', squeeze('yellow moon'));
   t.same(' now is the', squeeze('  now   is  the'));
@@ -56,4 +52,8 @@ test('#changeMoney pounds and pennies', t => {
   t.same('2 pounds 34 pence', changeMoney('£2.34'));
   t.same('4 dollars 56 cents', changeMoney('$4.56'));
   t.same('6 euro 78 cents', changeMoney('€6.78'));
+});
+
+test('toUrl', t => {
+  t.same('bob-and-alices-5-pounds-slash-10-dollars-trip', toUrl('Bob & Alice\'s £5/$10 trip? '));
 });

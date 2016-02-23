@@ -22,23 +22,19 @@ let convertMiscChar = str => {
 
 let convertPunctuation = str => {
   let exps = [
-    {punc: /\{|\}/g, replace: 'brace'},
-    {punc: /\(|\)/g, replace: ' bracket '},
-    {punc: /'/g, replace: ''},
-    {punc: /"/g, replace: ''},
-    {punc: /,/g, replace: ''},
-    {punc: /!/g, replace: ''},
-    {punc: /\?/g, replace: ''}
+    {punc: '\\{|\\}', replace: 'brace'},
+    {punc: '\\(|\\)', replace: ' bracket '},
+    {punc: '\'', replace: ''},
+    {punc: '"', replace: ''},
+    {punc: ',', replace: ''},
+    {punc: '!', replace: ''},
+    {punc: '\\?', replace: ''}
   ];
   for (let i = 0; i < exps.length; i++) {
-    str = str.replace(new RegExp(exps[i].punc), exps[i].replace);
+    str = str.replace(new RegExp(exps[i].punc, 'g'), exps[i].replace);
   }
   return str;
 }
-
-// let stripHTML
-
-let toUrl = str => replaceWhitespace(str.trim(), '-').toLowerCase();
 
 let squeeze = (str, range) => {
   let chars = [...str];
@@ -70,5 +66,7 @@ let changeMoney = str => {
   }
   return str;
 }
+
+let toUrl = str => replaceWhitespace(changeMoney(convertPunctuation(convertMiscChar(str.trim()))), '-').toLowerCase();
 
 export { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar, convertPunctuation }
