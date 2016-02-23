@@ -6,17 +6,37 @@ let replaceWhitespace = (str, replacement = '') => {
 
 let convertMiscChar = str => {
   let exps = [
-    {char: /&/, replace: 'and'},
-    {char: /#/, replace: 'number '},
-    {char: /%/, replace: ' percent'},
-    {char: /\/|\\/, replace: ' slash '},
-    {char: /\*/, replace: ' star '}
+    {char: /&/g, replace: 'and'},
+    {char: /#/g, replace: 'number '},
+    {char: /%/g, replace: ' percent'},
+    {char: /\/|\\/g, replace: ' slash '},
+    {char: /\*/g, replace: ' star '},
+    {char: /@/g, replace: ' at '}
+    // brackets
   ];
   for (let i = 0; i < exps.length; i++) {
-    str = str.replace(exps[i].char, exps[i].replace);
+    str = str.replace(new RegExp(exps[i].char), exps[i].replace);
   }
   return str;
 }
+
+let convertPunctuation = str => {
+  let exps = [
+    {punc: /\{|\}/g, replace: 'brace'},
+    {punc: /\(|\)/g, replace: ' bracket '},
+    {punc: /'/g, replace: ''},
+    {punc: /"/g, replace: ''},
+    {punc: /,/g, replace: ''},
+    {punc: /!/g, replace: ''},
+    {punc: /\?/g, replace: ''}
+  ];
+  for (let i = 0; i < exps.length; i++) {
+    str = str.replace(new RegExp(exps[i].punc), exps[i].replace);
+  }
+  return str;
+}
+
+// let stripHTML
 
 let toUrl = str => replaceWhitespace(str.trim(), '-').toLowerCase();
 
@@ -38,17 +58,17 @@ let squeeze = (str, range) => {
 
 let changeMoney = str => {
   let exps = [
-    {regex: /\$(\d+).(\d\d)/, replace: '$1 dollars $2 cents'},
-    {regex: /\$(\d+)/, replace: '$1 dollars'},
-    {regex: /\€(\d+).(\d\d)/, replace: '$1 euro $2 cents'},
-    {regex: /\€(\d+)/, replace: '$1 euro'},
-    {regex: /\£(\d+).(\d\d)/, replace: '$1 pounds $2 pence'},
-    {regex: /\£(\d+)/, replace: '$1 pounds'}
+    {regex: /\$(\d+).(\d\d)/g, replace: '$1 dollars $2 cents'},
+    {regex: /\$(\d+)/g, replace: '$1 dollars'},
+    {regex: /\€(\d+).(\d\d)/g, replace: '$1 euro $2 cents'},
+    {regex: /\€(\d+)/g, replace: '$1 euro'},
+    {regex: /\£(\d+).(\d\d)/g, replace: '$1 pounds $2 pence'},
+    {regex: /\£(\d+)/g, replace: '$1 pounds'}
   ];
   for (let i = 0; i < exps.length; i++) {
-    str = str.replace(exps[i].regex, exps[i].replace);
+    str = str.replace(new RegExp(exps[i].regex), exps[i].replace);
   }
   return str;
 }
 
-export { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar }
+export { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar, convertPunctuation }

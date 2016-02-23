@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar } from '../src/index';
+import { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar, convertPunctuation } from '../src/index';
 
 test('clairex', t => {
   t.same(42, getFoo());
@@ -22,7 +22,18 @@ test('convertMiscChar', t => {
   t.same(convertMiscChar('110%'), '110 percent');
   t.same(convertMiscChar('a/b'), 'a slash b');
   t.same(convertMiscChar('a\\b'), 'a slash b');
-  t.same(convertMiscChar('this*'), 'this star ');
+  t.same(convertMiscChar('*this*'), ' star this star ');
+  t.same(convertMiscChar('claire@parker'), 'claire at parker');
+});
+
+test('convertPunctuation', t => {
+  t.same(convertPunctuation('{ 2 + 2 }'), 'brace 2 + 2 brace');
+  t.same(convertPunctuation('(or you)'), ' bracket or you bracket ');
+  t.same(convertPunctuation('it\'s'), 'its');
+  t.same(convertPunctuation('"wow"'), 'wow');
+  t.same(convertPunctuation('er, no'), 'er no');
+  t.same(convertPunctuation('wow!!!'), 'wow');
+  t.same(convertPunctuation('huh?'), 'huh');
 });
 
 test('toUrl', t => {
