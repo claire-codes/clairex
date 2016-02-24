@@ -67,6 +67,6 @@ let changeMoney = str => {
   return str;
 }
 
-let toUrl = str => replaceWhitespace(changeMoney(convertPunctuation(convertMiscChar(str.trim()))), '-').toLowerCase();
+let toUrl = str => replaceWhitespace(changeMoney(convertPunctuation(convertMiscChar(squeeze(str.trim(),' ')))), '-').toLowerCase();
 
 export { getFoo, toUrl, squeeze, changeMoney, replaceWhitespace, convertMiscChar, convertPunctuation }

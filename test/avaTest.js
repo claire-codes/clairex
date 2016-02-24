@@ -40,6 +40,7 @@ test('#squeeze', t => {
   t.same('yelow mon', squeeze('yellow moon'));
   t.same(' now is the', squeeze('  now   is  the'));
   t.same('puters shot balls', squeeze('putters shoot balls', 'm-z'));
+  t.same('just some spaaace ', squeeze('just   some   spaaace  ',' '));
 });
 
 test('#changeMoney pounds only', t => {
@@ -55,5 +56,5 @@ test('#changeMoney pounds and pennies', t => {
 });
 
 test('toUrl', t => {
-  t.same('bob-and-alices-5-pounds-slash-10-dollars-trip', toUrl('Bob & Alice\'s £5/$10 trip? '));
+  t.same('bob-and-alices-5-pounds-slash-10-dollars-trip', toUrl('Bob & Alice\'s   £5/$10 trip? '));
 });
