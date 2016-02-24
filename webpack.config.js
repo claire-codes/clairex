@@ -3,7 +3,7 @@ module.exports = {
    output: {
       library: "clairex",
       libraryTarget: "umd",
-      filename: "clairex.js"
+      filename: "index.js"
    },
    devtool: "#inline-source-map",
    module: {

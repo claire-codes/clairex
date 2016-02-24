@@ -8,7 +8,7 @@ var uglify = require( "gulp-uglify" );
 gulp.task( "build", function() {
 	return gulp.src( "src/index.js" )
 		.pipe( webpack( require( "./webpack.config.js" ) ) )
-		.pipe( gulp.dest( "./lib" ) )
+		.pipe( gulp.dest( "." ) )
 		.pipe( sourcemaps.init( { loadMaps: true } ) )
 		.pipe( uglify( {
 			preserveComments: "license",
