@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-var clairex = require("../lib/clairex");
+var clairex = require("../index");
 
 describe("it should work", function() {
   it("really should", function() {
