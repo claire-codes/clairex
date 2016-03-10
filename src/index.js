@@ -27,6 +27,8 @@ let convertPunctuation = str => {
     {punc: '\'', replace: ''},
     {punc: '"', replace: ''},
     {punc: ',', replace: ''},
+    {punc: '\(\\w\)\\.\(\\s\)', replace: '$1$2'},
+    {punc: '\\.', replace: ' dot '},
     {punc: '!', replace: ''},
     {punc: '\\?', replace: ''}
   ];

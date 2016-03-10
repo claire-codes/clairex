@@ -34,6 +34,8 @@ test('convertPunctuation', t => {
   t.same(convertPunctuation('er, no'), 'er no');
   t.same(convertPunctuation('wow!!!'), 'wow');
   t.same(convertPunctuation('huh?'), 'huh');
+  t.same(convertPunctuation('package.json?'), 'package dot json');
+  t.same(convertPunctuation('Mr. Jones.com'), 'Mr Jones dot com');
 });
 
 test('#squeeze', t => {
