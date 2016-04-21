@@ -18,11 +18,11 @@ let chainObj = {
         this.phrase = "";
         return tmp;
     }
-}
+};
 
 let ChainPrototype = function() {
     this.phrase = "";
-}
+};
 
 ChainPrototype.prototype.setPhrase = function(noun) {
     this.phrase = noun;
@@ -46,4 +46,4 @@ ChainPrototype.prototype.shoutIt = function() {
 export {
     chainObj,
     ChainPrototype
-}
+};
