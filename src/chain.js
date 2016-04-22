@@ -1,6 +1,11 @@
 let chainObj = {
     phrase: "",
 
+    setPhrase: function(noun) {
+        this.phrase = noun;
+        return this;
+    },
+
     shoutIt: function() {
         if (this.phrase) {
             this.phrase = this.phrase.toUpperCase();
@@ -8,8 +13,8 @@ let chainObj = {
         return this;
     },
 
-    makeItRed: function(noun) {
-        this.phrase = "red " + noun;
+    makeItRed: function() {
+        this.phrase = "red " + this.phrase;
         return this;
     },
 
