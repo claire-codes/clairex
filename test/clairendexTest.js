@@ -8,7 +8,7 @@ import {
     replaceWhitespace,
     convertMiscChar,
     convertPunctuation
-} from "../src/index";
+} from "../src/clairendex";
 
 test("clairex", t => {
     t.deepEqual(42, getFoo());
