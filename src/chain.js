@@ -1,3 +1,8 @@
+/****
+ * This is a proof-of-concept that I used to learn about chaining.
+ * I'm leaving it here because I can.
+ ****/
+
 let chainObj = {
     phrase: "",
 
