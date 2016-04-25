@@ -1,12 +1,40 @@
-## ES6 Module Fun
+## Clairex
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
 ### But really, wtf is this?
 
-Inspired by [this blog post](https://www.smashingmagazine.com/2016/02/writing-next-generation-reusable-javascript-modules/)
+* Fun with ES6 modules
+ * a test suite using Ava
+ * a test suite using Mocha for the transpiled code
+* Fun with method chaining in JavaScript
+* A JavaScript/ES6 implementation of Ruby's [Stringex](https://github.com/rsl/stringex) library
+ * using `toUrl()` in my own Yeoman generator [generator-clekyll](https://github.com/claireparker/generator-clekyll): this was my first inspiration for the project
+* Another repo/project with an egotistical name :princess: (_Claire is the __best__ name_)
 
-As a proof-of-concept I have set up tests using Mocha and Ava. I haven't written all the Mocha tests - Ava is what I used as I wanted an excuse to learn it.
+### Usage
+
+In order to make use of `this` to enable method chaining, the methods all live within an object called `clairex`. This is what is exported and you have access to. To get access to an individual method, e.g. `toUrl()`, install the module and call it:
+
+```
+npm i -s clairex        // -s adds it to your package.json
+```
+
+Now require it in a script in one of two ways:
+
+```
+var x = require('clairex');
+
+x.clairex.toUrl('Convert this string to a usable URL');
+```
+
+Or:
+
+```
+var x = require('clairex').clairex;
+
+x.toUrl('Convert this string to a usable URL');
+```
 
 ### Transpile
 
