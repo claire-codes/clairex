@@ -1,14 +1,8 @@
 import test from "ava";
 import "babel-core/register";
 import {
-    clairex,
-    toUrl,
-    squeeze
+    clairex
 } from "../src/clairendex";
-
-test("clairex", t => {
-    t.deepEqual(42, clairex.getFoo());
-});
 
 test("replaceWhitespace", t => {
     t.deepEqual(clairex.set("foo bar").replaceWhitespace("-").val(), "foo-bar");
@@ -63,4 +57,11 @@ test("#changeMoney pounds and pennies", t => {
 
 test("toUrl", t => {
     t.deepEqual("bob-and-alices-5-pounds-slash-10-dollars-trip", clairex.toUrl("Bob & Alice\"s   £5/$10 trip? "));
+    t.deepEqual("im-aaa-lumberja_ck-andandand-star-its-okie-dkoook-number-5-dot-66-5-dollars-66-cents",
+        clairex.toUrl("I'm aaa    lumberja_ck &&& *it's OKie dkOOOK #5.66 $5.66"));
 });
+
+test("chaining works as expected", t => {
+    t.deepEqual(clairex.set("I like   drinking   tasty tea ").replaceWhitespace("-").squeeze("-").val(), "I-like-drinking-tasty-tea-")
+    t.deepEqual(clairex.set("£12.44").convertPunctuation().changeMoney().val(), "12 pounds dot 44");
+})

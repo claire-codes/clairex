@@ -2,10 +2,6 @@ let clairex = {
 
     ex: "",
 
-    getFoo: function() {
-        return 42;
-    },
-
     set: function(str) {
         this.ex = str;
         return this;
@@ -87,9 +83,10 @@ let clairex = {
         return this.set(str.trim())
             .squeeze(" ")
             .convertMiscChar()
-            .convertPunctuation()
             .changeMoney()
+            .convertPunctuation()
             .replaceWhitespace("-")
+            .squeeze("-")           // clean up for the convert functions
             .val()
             .toLowerCase();
     },
