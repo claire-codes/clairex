@@ -21,6 +21,5 @@ test("chaining a prototype", t => {
     t.deepEqual("red red bush", sentence.setPhrase("bush").makeItRed().makeItRed().phrase);
     t.deepEqual("RED BALLOONS", sentence.setPhrase("balloons").makeItRed().shoutIt().phrase);
     t.deepEqual("red BALLOONS", sentence.setPhrase("balloons").shoutIt().makeItRed().phrase);
-    sentence = new ChainPrototype();
-    t.deepEqual("", sentence.shoutIt().phrase);
+    t.deepEqual("", new ChainPrototype().shoutIt().phrase);
 });
