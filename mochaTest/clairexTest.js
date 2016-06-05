@@ -1,22 +1,16 @@
 var expect = require("chai").expect;
-var clairex = require("../index");
-
-describe("it should work", function() {
-    it("really should", function() {
-        expect(clairex.getFoo()).to.eq(42);
-    });
-});
+var clairex = require("../index").clairex;
 
 describe("#squeeze", function() {
     it("should work", function() {
-        expect(clairex.squeeze("yellow moon")).to.eq("yelow mon");
-        expect(clairex.squeeze("yellow moon")).to.eq("yelow mon");
-        expect(clairex.squeeze("putters shoot balls", "m-z")).to.eq("puters shot balls");
+        expect(clairex.set("yellow moon").squeeze().val()).to.eq("yelow mon");
+        expect(clairex.set("yellow moon").squeeze().val()).to.eq("yelow mon");
+        expect(clairex.set("putters shoot balls").squeeze("m-z").val()).to.eq("puters shot balls");
     });
 });
 
 describe("#changeMoney", function() {
     it("should work", function() {
-        expect(clairex.changeMoney("£5")).to.eq("5 pounds");
+        expect(clairex.set("£5").changeMoney().val()).to.eq("5 pounds");
     });
 });
